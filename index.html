@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Background</title>
+  <style>
+    :root {
+      --off-white-text: #efeeec;
+      --gray-text: #9c9b9a;
+      --pink: #a562df;
+      --dark-primary: #7827be;
+      --cubic-default: cubic-bezier(0.525, 0, 0, 1);
+      --duration-fast: 0.2s;
+      --duration-normal: 0.450s;
+      --color-dark: #121212;
+      --nav-bg-height: 100dvh;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-size: 14px;
+      line-height: 20px;
+      font-family: neue-haas-grotesk-text, sans-serif;
+      color: #fff;
+      box-sizing: border-box;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .background {
+      position: relative;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .main-w {
+      box-sizing: border-box;
+    }
+
+    .section.u--rel.z--2 {
+      display: block;
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .bg {
+      z-index: 0;
+      opacity: 0.8;
+      filter: brightness(130%) saturate(200%) hue-rotate(260deg);
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .bg__unicorn-dark-overlay {
+      pointer-events: none;
+      background-image: linear-gradient(0deg, #000, #0000);
+      height: 20%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+    }
+
+    .bg-wrapper {
+      z-index: -1;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    canvas {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      vertical-align: baseline;
+      box-sizing: border-box;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div data-barba="wrapper" class="background">
+    <div data-barba-namespace="home" data-barba="container" class="main-w">
+      <section data-hero-section="" class="section u--rel z--2">
+        <div class="bg">
+          <div
+            data-us-alttext="graphic background"
+            data-us-project-src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/scenes/landing-bg@1.0.json"
+            data-us-disablemobile="false"
+            class="bg-wrapper"
+          >
+            <canvas role="image" class="canvas"></canvas>
+          </div>
+        </div>
+        <div class="bg__unicorn-dark-overlay"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Required Scripts -->
+  <script src="https://cdn.jsdelivr.net/gh/ilja-van-eck/usm@latest/dist/usm.min.js"></script>
+  <script defer src="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/CustomEase.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/SplitText.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/InertiaPlugin.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/ScrambleTextPlugin.min.js"></script>
+
+  <!-- USM Initialization -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bgWrapper = document.querySelector('.bg-wrapper');
+      if (bgWrapper && window.USM && !bgWrapper.hasAttribute('data-us-initialized')) {
+        USM.init();
+      }
+    });
+  </script>
+</body>
+</html>
