@@ -109,26 +109,22 @@
     </div>
   </div>
 
-  <!-- Required Scripts -->
-  <script src="https://cdn.unicorn.studio/unicorn-studio-sdk@latest/unicornStudio.umd.js"></script>
-  <script defer src="https://cdn.unicorn.studio/v1.3.1/unicornStudio.umd.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/CustomEase.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/SplitText.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/InertiaPlugin.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/gh/ilja-van-eck/osmo/assets/gsap/ScrambleTextPlugin.min.js"></script>
-
-  <!-- USM Initialization -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const bgWrapper = document.querySelector('.bg-wrapper');
-      if (bgWrapper && window.USM && !bgWrapper.hasAttribute('data-us-initialized')) {
-        USM.init();
+  <!-- Only this SDK loader is needed -->
+  <script type="text/javascript">
+    !function(){
+      if(!window.UnicornStudio){
+        window.UnicornStudio = { isInitialized: false };
+        var s = document.createElement("script");
+        s.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js";
+        s.onload = function(){
+          if (!window.UnicornStudio.isInitialized){
+            UnicornStudio.init();
+            window.UnicornStudio.isInitialized = true;
+          }
+        };
+        (document.head || document.body).appendChild(s);
       }
-    });
+    }();
   </script>
 </body>
 </html>
