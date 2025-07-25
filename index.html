@@ -109,22 +109,11 @@
     </div>
   </div>
 
-  <!-- Only this SDK loader is needed -->
-  <script type="text/javascript">
-    !function(){
-      if(!window.UnicornStudio){
-        window.UnicornStudio = { isInitialized: false };
-        var s = document.createElement("script");
-        s.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js";
-        s.onload = function(){
-          if (!window.UnicornStudio.isInitialized){
-            UnicornStudio.init();
-            window.UnicornStudio.isInitialized = true;
-          }
-        };
-        (document.head || document.body).appendChild(s);
-      }
-    }();
+  <!-- ✅ Official Unicorn Studio SDK -->
+  <script src="https://cdn.unicorn.studio/v1.4.1/unicornStudio.umd.js"></script>
+  <script>
+    UnicornStudio.init()
+      .catch(err => console.error('UnicornStudio.init error:', err));
   </script>
 </body>
 </html>
